@@ -9,6 +9,8 @@
   <meta property="og:title" content="KO-BO BAKEHOUSE" />
   <meta property="og:description" content="Small-batch focaccia and baked goods made with homemade sourdough in Mississauga." />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/hero-focaccia.jpg" />
+  <link rel="canonical" href="https://palattao.net/mariko-bakery-site/" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍞</text></svg>" />
 
   <script>document.documentElement.classList.add('js');</script>
@@ -392,7 +394,20 @@
       aspect-ratio: 4 / 5;
       border-radius: 999px 999px 28px 28px;
       box-shadow: var(--shadow);
-      padding-top: 60px;
+      padding: 0;
+    }
+
+    .hero-image.ph,
+    .about-image.ph,
+    .card-image.ph { padding: 0; }
+    .ph img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+      display: block;
     }
 
     .hero-badge {
@@ -952,7 +967,7 @@
         <a href="#order">Order &amp; Pickup</a>
       </nav>
 
-      <a class="button small header-cta" href="mailto:mariko.andris@gmail.com?subject=KO-BO%20Bakehouse%20Order">Order</a>
+      <a class="button small header-cta" href="mailto:mariko.andris@gmail.com?subject=KO-BO%20Bakehouse%20Order&body=Hi%20Mariko%2C%0A%0ABake%3A%20%0AQuantity%3A%20%0APickup%20date%3A%20%0AName%3A%20%0APhone%3A%20%0A%0AThank%20you!">Order</a>
 
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
         <span></span>
@@ -972,18 +987,19 @@
           </p>
 
           <div class="hero-actions">
-            <a class="button" href="mailto:mariko.andris@gmail.com?subject=KO-BO%20Bakehouse%20Order">Order Your Bake</a>
+            <a class="button" href="mailto:mariko.andris@gmail.com?subject=KO-BO%20Bakehouse%20Order&body=Hi%20Mariko%2C%0A%0ABake%3A%20%0AQuantity%3A%20%0APickup%20date%3A%20%0AName%3A%20%0APhone%3A%20%0A%0AThank%20you!">Order Your Bake</a>
             <a class="button secondary" href="#bakes">See What’s Baking</a>
           </div>
         </div>
 
         <div class="hero-visual reveal" style="--d:.15s">
-          <div class="hero-image ph" role="img" aria-label="Placeholder image of freshly baked sourdough focaccia">
+          <div class="hero-image ph">
             <div>
               <span class="ph-label">Photo placeholder</span>
               <strong>Freshly Baked Focaccia</strong>
-              <small>Replace with a warm, natural-light bakery photo</small>
+              <small>Add images/hero-focaccia.jpg</small>
             </div>
+            <img src="images/hero-focaccia.jpg" alt="Freshly baked sourdough focaccia" onerror="this.remove()" />
           </div>
           <div class="hero-badge" aria-hidden="true">
             <div>
@@ -1005,12 +1021,13 @@
 
     <section class="section" id="about">
       <div class="container about-grid">
-        <div class="about-image ph reveal" role="img" aria-label="Placeholder image of a baker preparing dough">
+        <div class="about-image ph reveal">
           <div>
             <span class="ph-label">Photo placeholder</span>
             <strong>Made in Small Batches</strong>
-            <small>Replace with a baking or sourdough photo</small>
+            <small>Add images/baker-dough.jpg</small>
           </div>
+          <img src="images/baker-dough.jpg" alt="Baking sourdough dough in small batches" onerror="this.remove()" />
         </div>
 
         <div class="about-copy reveal" style="--d:.1s">
@@ -1056,11 +1073,12 @@
 
         <div class="cards">
           <article class="card reveal">
-            <div class="card-image image-1 ph" role="img" aria-label="Placeholder image of focaccia">
+            <div class="card-image image-1 ph">
               <div>
                 <span class="ph-label">Photo placeholder</span>
                 <strong>Focaccia photo</strong>
               </div>
+              <img src="images/focaccia.jpg" alt="Sourdough focaccia" onerror="this.remove()" />
             </div>
             <div class="card-body">
               <span class="tag">Signature</span>
@@ -1070,11 +1088,12 @@
           </article>
 
           <article class="card reveal" style="--d:.1s">
-            <div class="card-image image-2 ph" role="img" aria-label="Placeholder image of sourdough bread">
+            <div class="card-image image-2 ph">
               <div>
                 <span class="ph-label">Photo placeholder</span>
                 <strong>Sourdough photo</strong>
               </div>
+              <img src="images/sourdough.jpg" alt="Sourdough bakes" onerror="this.remove()" />
             </div>
             <div class="card-body">
               <span class="tag">Bakery favourite</span>
@@ -1084,11 +1103,12 @@
           </article>
 
           <article class="card reveal" style="--d:.2s">
-            <div class="card-image image-3 ph" role="img" aria-label="Placeholder image of a sweet baked good">
+            <div class="card-image image-3 ph">
               <div>
                 <span class="ph-label">Photo placeholder</span>
                 <strong>Sweet bake photo</strong>
               </div>
+              <img src="images/sweet-bake.jpg" alt="Seasonal sweet bake" onerror="this.remove()" />
             </div>
             <div class="card-body">
               <span class="tag">Seasonal</span>
@@ -1237,7 +1257,7 @@
 
     <div class="container">
       <p class="concept-note">
-        © 2026 KO-BO BAKEHOUSE · Design concept — menu, images, and details subject to change.
+        © 2026 KO-BO BAKEHOUSE · Small-batch bakery in Mississauga.
       </p>
     </div>
   </footer>
