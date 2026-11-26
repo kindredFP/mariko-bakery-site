@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fbf6ee" />
+  <title>KO-BO BAKEHOUSE | Small-Batch Sourdough Bakery in Mississauga</title>
+  <meta name="description" content="KO-BO BAKEHOUSE is a small-batch home bakery in Mississauga offering focaccia and baked goods made with homemade sourdough, simple ingredients, and lots of love & care." />
+  <meta property="og:title" content="KO-BO BAKEHOUSE" />
+  <meta property="og:description" content="Small-batch focaccia and baked goods made with homemade sourdough in Mississauga." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍞</text></svg>" />
+
+  <script>document.documentElement.classList.add('js');</script>
+
+  <style>
+    :root {
+      --cream: #fbf6ee;
+      --paper: #fffaf2;
+      --card: #fffdf9;
+      --brown: #3f2d20;
+      --espresso: #2a1d14;
+      --cocoa: #6b4a33;
+      --gold: #c99a53;
+      --gold-deep: #8f5f22;
+      --blush: #ecd3bf;
+      --crust: #e6c9a1;
+      --muted: #6f5f52;
+      --line: rgba(63, 45, 32, .14);
+      --radius: 22px;
+      --shadow: 0 18px 40px -18px rgba(63, 45, 32, .35);
+      --shadow-soft: 0 10px 30px -14px rgba(63, 45, 32, .25);
+      --max-width: 1120px;
+      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --header-h: 68px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      overflow-x: clip;
+      font-family: var(--sans);
+      color: var(--brown);
+      line-height: 1.65;
+      background-color: var(--cream);
+      background-image: radial-gradient(rgba(63, 45, 32, .035) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    p { margin: 0; }
+
+    :focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    .container {
+      width: min(100% - 40px, var(--max-width));
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 0;
+      background: var(--brown);
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 0 0 10px 0;
+      z-index: 100;
+    }
+    .skip-link:focus { left: 0; }
+
+    /* ---------- Typography ---------- */
+    h1, h2, h3 {
+      font-family: var(--serif);
+      font-weight: 600;
+      line-height: 1.1;
+      margin: 0;
+      letter-spacing: -.01em;
+    }
+
+    h1 {
+      font-size: clamp(2.35rem, 8.6vw, 4.5rem);
+      letter-spacing: -.025em;
+    }
+
+    h1 em {
+      font-style: italic;
+      font-weight: 500;
+      color: var(--gold-deep);
+    }
+
+    h2 { font-size: clamp(1.95rem, 5.6vw, 3rem); }
+    h3 { font-size: 1.35rem; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 18px;
+      color: var(--gold-deep);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      flex: none;
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    /* ---------- Buttons ---------- */
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 0 28px;
+      border: 2px solid var(--brown);
+      border-radius: 999px;
+      background: var(--brown);
+      color: var(--cream);
+      font: inherit;
+      font-size: .95rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      background: var(--espresso);
+      border-color: var(--espresso);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .button:active { transform: translateY(0); }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--brown);
+    }
+
+    .button.secondary:hover,
+    .button.secondary:focus-visible {
+      background: var(--brown);
+      border-color: var(--brown);
+      color: var(--cream);
+    }
+
+    .button.small {
+      min-height: 42px;
+      padding: 0 20px;
+      font-size: .85rem;
+    }
+
+    .button svg { flex: none; }
+
+    /* ---------- Header ---------- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(251, 246, 238, .9);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .25s ease, box-shadow .25s ease;
+    }
+
+    .site-header.scrolled {
+      border-bottom-color: var(--line);
+      box-shadow: 0 8px 24px -16px rgba(63, 45, 32, .35);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: var(--header-h);
+    }
+
+    .brand {
+      margin-right: auto;
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--brown);
+      white-space: nowrap;
+    }
+
+    .brand span {
+      color: var(--gold-deep);
+      font-weight: 500;
+      font-style: italic;
+      letter-spacing: .04em;
+      text-transform: none;
+    }
+
+    .primary-nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .primary-nav a {
+      position: relative;
+      padding: 6px 0;
+      font-size: .93rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--cocoa);
+      transition: color .2s ease;
+    }
+
+    .primary-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s ease;
+    }
+
+    .primary-nav a:hover,
+    .primary-nav a:focus-visible { color: var(--brown); }
+
+    .primary-nav a:hover::after,
+    .primary-nav a:focus-visible::after { transform: scaleX(1); }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--card);
+      color: var(--brown);
+      cursor: pointer;
+      place-items: center;
+    }
+
+    .menu-toggle span,
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 2px;
+      background: currentColor;
+      transition: transform .25s ease, background .2s ease;
+    }
+
+    .menu-toggle span { position: relative; }
+    .menu-toggle span::before,
+    .menu-toggle span::after { content: ""; position: absolute; left: 0; }
+    .menu-toggle span::before { top: -6px; }
+    .menu-toggle span::after { top: 6px; }
+
+    .menu-toggle[aria-expanded="true"] span { background: transparent; }
+    .menu-toggle[aria-expanded="true"] span::before { transform: translateY(6px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] span::after { transform: translateY(-6px) rotate(-45deg); }
+
+    /* ---------- Placeholder images ---------- */
+    .ph {
+      position: relative;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 32px 26px;
+      color: var(--brown);
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255, 253, 249, .55), transparent 55%),
+        linear-gradient(150deg, rgba(201, 154, 83, .32), rgba(107, 74, 51, .22)),
+        repeating-linear-gradient(45deg, #ead8bf 0 16px, #f2e3cc 16px 32px);
+      overflow: hidden;
+    }
+
+    .ph::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1.5px dashed rgba(63, 45, 32, .35);
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    .ph-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: var(--brown);
+      color: var(--cream);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .ph strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .ph small {
+      display: block;
+      margin: 8px auto 0;
+      max-width: 22ch;
+      font-size: .86rem;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 40px 0 72px;
+      background:
+        radial-gradient(circle at 90% 8%, rgba(201, 154, 83, .24), transparent 42%),
+        radial-gradient(circle at 5% 90%, rgba(236, 211, 191, .5), transparent 46%);
+    }
+
+    .hero-inner {
+      display: grid;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .hero-copy .lede {
+      max-width: 34em;
+      margin: 22px 0 30px;
+      font-size: 1.08rem;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .hero-visual {
+      position: relative;
+      width: min(100%, 380px);
+      margin-inline: auto;
+      padding-bottom: 6px;
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: -14px -14px 20px 14px;
+      border: 1px solid rgba(143, 95, 34, .4);
+      border-radius: 999px 999px 32px 32px;
+    }
+
+    .hero-image {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      border-radius: 999px 999px 28px 28px;
+      box-shadow: var(--shadow);
+      padding-top: 60px;
+    }
+
+    .hero-badge {
+      position: absolute;
+      right: -6px;
+      bottom: -10px;
+      z-index: 2;
+      display: grid;
+      place-content: center;
+      width: 118px;
+      height: 118px;
+      padding: 10px;
+      border-radius: 50%;
+      background: var(--brown);
+      color: var(--cream);
+      text-align: center;
+      box-shadow: var(--shadow);
+      outline: 2px dashed rgba(201, 154, 83, .7);
+      outline-offset: -8px;
+    }
+
+    .hero-badge b {
+      display: block;
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.15;
+    }
+
+    .hero-badge span {
+      display: block;
+      margin-top: 4px;
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      line-height: 1.3;
+      text-transform: uppercase;
+      color: var(--crust);
+    }
+
+    /* ---------- Values strip ---------- */
+    .strip {
+      background: var(--brown);
+      color: var(--cream);
+    }
+
+    .strip-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px 26px;
+      padding: 16px 0;
+      font-family: var(--serif);
+      font-size: 1.02rem;
+      font-style: italic;
+      letter-spacing: .02em;
+    }
+
+    .strip-inner span {
+      display: inline-flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .strip-inner span + span::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      margin-left: -6px;
+      background: var(--gold);
+      transform: rotate(45deg);
+    }
+
+    /* ---------- Sections ---------- */
+    .section {
+      position: relative;
+      padding: clamp(68px, 10vw, 116px) 0;
+      scroll-margin-top: var(--header-h);
+    }
+
+    .section.soft {
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section.soft::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -10px;
+      height: 10px;
+      background: radial-gradient(circle at 50% 100%, var(--paper) 9px, transparent 9.5px) 0 0 / 20px 10px repeat-x;
+      pointer-events: none;
+    }
+
+    .section-heading {
+      max-width: 660px;
+      margin-bottom: 40px;
+    }
+
+    .section-heading h2 { margin-bottom: 16px; }
+    .section-heading p:not(.eyebrow) { color: var(--muted); font-size: 1.04rem; }
+
+    /* ---------- About ---------- */
+    .about-grid {
+      display: grid;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about-image {
+      aspect-ratio: 1 / 1;
+      border-radius: 28px 140px 28px 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .about-copy h2 { margin-bottom: 20px; }
+
+    .about-copy p:not(.eyebrow) {
+      color: var(--muted);
+      font-size: 1.04rem;
+    }
+
+    .about-copy p:not(.eyebrow) + p { margin-top: 14px; }
+
+    .values {
+      display: grid;
+      margin-top: 30px;
+      border-top: 1px solid var(--line);
+    }
+
+    .value {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 16px 0 16px 28px;
+      position: relative;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .value::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 25px;
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      transform: rotate(45deg);
+    }
+
+    .value strong {
+      font-family: var(--serif);
+      font-size: 1.12rem;
+      font-weight: 600;
+    }
+
+    .value span { font-size: .92rem; color: var(--muted); }
+
+    /* ---------- Bakes ---------- */
+    .cards {
+      display: grid;
+      gap: 24px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow-soft);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+
+    .card-image {
+      aspect-ratio: 4 / 3;
+      padding: 28px 22px;
+    }
+
+    .card-image::before { inset: 10px; border-radius: 14px; }
+    .card-image strong { font-size: 1.15rem; }
+
+    .image-1 {
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255, 253, 249, .5), transparent 55%),
+        linear-gradient(150deg, rgba(201, 154, 83, .38), rgba(107, 74, 51, .2)),
+        repeating-linear-gradient(45deg, #ead3b0 0 16px, #f1dfc3 16px 32px);
+    }
+
+    .image-2 {
+      background:
+        radial-gradient(circle at 70% 25%, rgba(255, 253, 249, .5), transparent 55%),
+        linear-gradient(150deg, rgba(107, 74, 51, .3), rgba(201, 154, 83, .2)),
+        repeating-linear-gradient(-45deg, #e3c9a5 0 16px, #edd9bb 16px 32px);
+    }
+
+    .image-3 {
+      background:
+        radial-gradient(circle at 50% 20%, rgba(255, 253, 249, .55), transparent 55%),
+        linear-gradient(150deg, rgba(212, 150, 120, .3), rgba(201, 154, 83, .22)),
+        repeating-linear-gradient(45deg, #efd5c2 0 16px, #f6e4d5 16px 32px);
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 24px 24px 28px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(201, 154, 83, .2);
+      color: var(--gold-deep);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .card-body p { color: var(--muted); font-size: .98rem; }
+
+    /* ---------- Order ---------- */
+    .steps {
+      display: grid;
+      gap: 18px;
+      counter-reset: step;
+    }
+
+    .step {
+      position: relative;
+      padding: 28px 26px 28px 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow-soft);
+      counter-increment: step;
+    }
+
+    .step::before {
+      content: "0" counter(step);
+      display: block;
+      margin-bottom: 14px;
+      font-family: var(--serif);
+      font-size: 2.6rem;
+      font-style: italic;
+      font-weight: 500;
+      line-height: 1;
+      color: var(--gold);
+    }
+
+    .step h3 { margin-bottom: 10px; }
+    .step p { color: var(--muted); font-size: .98rem; }
+
+    .notice {
+      position: relative;
+      margin-top: 28px;
+      padding: 26px 24px 26px 26px;
+      border-radius: var(--radius);
+      background: var(--brown);
+      color: var(--cream);
+      font-size: 1.02rem;
+      overflow: hidden;
+    }
+
+    .notice::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 1px dashed rgba(201, 154, 83, .45);
+      border-radius: calc(var(--radius) - 8px);
+      pointer-events: none;
+    }
+
+    .notice strong {
+      display: block;
+      margin-bottom: 6px;
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--crust);
+    }
+
+    .notice > * { position: relative; }
+
+    /* ---------- Pickup ---------- */
+    .pickup-grid {
+      display: grid;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .pickup-grid h2 { margin-bottom: 18px; }
+    .pickup-grid p:not(.eyebrow) { color: var(--muted); font-size: 1.04rem; margin-bottom: 28px; }
+
+    .pickup-card {
+      padding: 28px 22px 22px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: var(--cream);
+      box-shadow: var(--shadow);
+    }
+
+    .pickup-card h3 { margin-bottom: 8px; }
+    .pickup-card > p { color: var(--muted); margin-bottom: 18px; font-size: .98rem; }
+
+    .contact-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .contact-list a {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 58px;
+      padding: 8px 14px 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--card);
+      font-weight: 600;
+      font-size: .95rem;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .contact-list a:hover,
+    .contact-list a:focus-visible {
+      transform: translateX(4px);
+      border-color: var(--gold);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .contact-list .icon {
+      flex: none;
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(201, 154, 83, .22);
+      color: var(--gold-deep);
+    }
+
+    .contact-list .arrow {
+      margin-left: auto;
+      flex: none;
+      color: var(--gold-deep);
+    }
+
+    /* ---------- Footer ---------- */
+    .site-footer {
+      position: relative;
+      padding: 56px 0 28px;
+      background: var(--espresso);
+      color: rgba(251, 246, 238, .82);
+    }
+
+    .site-footer::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -10px;
+      height: 10px;
+      background: radial-gradient(circle at 50% 100%, var(--espresso) 9px, transparent 9.5px) 0 0 / 20px 10px repeat-x;
+    }
+
+    .footer-inner {
+      display: grid;
+      gap: 30px;
+    }
+
+    .footer-brand {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--cream);
+    }
+
+    .footer-tagline { margin-top: 8px; font-size: .92rem; max-width: 30ch; }
+
+    .footer-nav,
+    .footer-social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 22px;
+    }
+
+    .footer-nav a,
+    .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      font-size: .93rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--cream);
+    }
+
+    .footer-nav a:hover,
+    .footer-social a:hover,
+    .footer-nav a:focus-visible,
+    .footer-social a:focus-visible {
+      color: var(--crust);
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+
+    .concept-note {
+      margin-top: 34px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(251, 246, 238, .16);
+      font-size: .8rem;
+      color: rgba(251, 246, 238, .6);
+    }
+
+    /* ---------- Reveal on scroll ---------- */
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .7s ease, transform .7s ease;
+      transition-delay: var(--d, 0s);
+    }
+
+    .js .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ---------- Mobile navigation ---------- */
+    @media (max-width: 819px) {
+      .menu-toggle { display: grid; }
+      .header-cta { order: 2; }
+      .menu-toggle { order: 3; }
+
+      .primary-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 20px 20px;
+        background: var(--cream);
+        border-bottom: 1px solid var(--line);
+        box-shadow: 0 24px 30px -20px rgba(63, 45, 32, .4);
+      }
+
+      .primary-nav a {
+        padding: 16px 4px;
+        font-family: var(--serif);
+        font-size: 1.25rem;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .primary-nav a::after { display: none; }
+
+      .js .primary-nav {
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-8px);
+        transition: opacity .25s ease, transform .25s ease, visibility 0s linear .25s;
+      }
+
+      .js .primary-nav.open {
+        visibility: visible;
+        opacity: 1;
+        transform: none;
+        transition-delay: 0s;
+      }
+    }
+
+    @media (min-width: 820px) {
+      .header-cta { margin-left: 8px; }
+    }
+
+    /* ---------- Small phones ---------- */
+    @media (max-width: 400px) {
+      .brand { font-size: 1.02rem; letter-spacing: .06em; }
+      .header-inner { gap: 8px; }
+      .button.small { padding: 0 16px; }
+      .hero-badge { width: 104px; height: 104px; right: -4px; }
+      .hero-badge b { font-size: .92rem; }
+    }
+
+    /* ---------- Tablet and up ---------- */
+    @media (min-width: 560px) {
+      .hero-actions { flex-direction: row; flex-wrap: wrap; }
+      .values { grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line); }
+      .value { border-bottom: 0; padding: 18px 14px 18px 26px; }
+      .cards { grid-template-columns: repeat(2, 1fr); }
+      .pickup-card { padding: 34px 32px 28px; }
+    }
+
+    @media (min-width: 900px) {
+      .hero { padding: 72px 0 112px; }
+      .hero-inner { grid-template-columns: 1.1fr .9fr; gap: 64px; }
+      .hero-visual { width: min(100%, 440px); margin-inline: 0 auto; }
+      .hero-badge { width: 134px; height: 134px; right: -22px; }
+      .hero-badge b { font-size: 1.12rem; }
+
+      .about-grid { grid-template-columns: .9fr 1.1fr; gap: 72px; }
+      .values { grid-template-columns: 1fr; border-bottom: 0; }
+      .value { border-bottom: 1px solid var(--line); }
+
+      .cards { grid-template-columns: repeat(3, 1fr); gap: 28px; }
+      .steps { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+      .notice { display: flex; align-items: center; gap: 22px; padding: 30px 40px; }
+      .notice strong { margin: 0; flex: none; }
+
+      .pickup-grid { grid-template-columns: 1fr 1fr; gap: 72px; }
+      .footer-inner { grid-template-columns: 1.3fr 1fr auto; align-items: start; }
+    }
+
+    @media (min-width: 1100px) {
+      .about-grid { grid-template-columns: 5fr 6fr; }
+    }
+
+    /* ---------- Reduced motion ---------- */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+      .js .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top">KO-BO <span>Bakehouse</span></a>
+
+      <nav class="primary-nav" id="site-nav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#bakes">Bakes</a>
+        <a href="#order">Order &amp; Pickup</a>
+      </nav>
+
+      <a class="button small header-cta" href="mailto:mariko.andris@gmail.com?subject=KO-BO%20Bakehouse%20Order">Order</a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="container hero-inner">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Small-batch home bakery · Mississauga</p>
+          <h1>Homemade sourdough, baked with <em>love &amp; care</em>.</h1>
+          <p class="lede">
+            KO-BO BAKEHOUSE offers focaccia and baked goods made in small batches with homemade
+            sourdough and simple ingredients.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button" href="mailto:mariko.andris@gmail.com?subject=KO-BO%20Bakehouse%20Order">Order Your Bake</a>
+            <a class="button secondary" href="#bakes">See What’s Baking</a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" style="--d:.15s">
+          <div class="hero-image ph" role="img" aria-label="Placeholder image of freshly baked sourdough focaccia">
+            <div>
+              <span class="ph-label">Photo placeholder</span>
+              <strong>Freshly Baked Focaccia</strong>
+              <small>Replace with a warm, natural-light bakery photo</small>
+            </div>
+          </div>
+          <div class="hero-badge" aria-hidden="true">
+            <div>
+              <b>Made to order</b>
+              <span>Order 3 days ahead</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="strip" aria-label="Bakery highlights">
+      <div class="container strip-inner">
+        <span>Homemade Sourdough</span>
+        <span>Small Batches</span>
+        <span>Made to Order</span>
+      </div>
+    </div>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-image ph reveal" role="img" aria-label="Placeholder image of a baker preparing dough">
+          <div>
+            <span class="ph-label">Photo placeholder</span>
+            <strong>Made in Small Batches</strong>
+            <small>Replace with a baking or sourdough photo</small>
+          </div>
+        </div>
+
+        <div class="about-copy reveal" style="--d:.1s">
+          <p class="eyebrow">Welcome to KO-BO</p>
+          <h2>Baked slowly, with simple ingredients.</h2>
+          <p>
+            KO-BO BAKEHOUSE is a small-batch home bakery located in Mississauga. Every bake is
+            prepared with homemade sourdough, simple ingredients, and lots of love &amp; care.
+          </p>
+          <p>
+            Items are made to order, so each order is prepared after payment is confirmed. Please
+            submit orders at least three days before your requested pickup date.
+          </p>
+
+          <div class="values">
+            <div class="value">
+              <strong>Homemade Sourdough</strong>
+              <span>Simple, thoughtful baking</span>
+            </div>
+            <div class="value">
+              <strong>Small Batches</strong>
+              <span>Made with care</span>
+            </div>
+            <div class="value">
+              <strong>Made to Order</strong>
+              <span>Prepared after payment</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft" id="bakes">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">From the oven</p>
+          <h2>Focaccia &amp; baked goods</h2>
+          <p>
+            A preview of KO-BO BAKEHOUSE offerings. Final menu items, flavours, availability, and
+            prices are to be confirmed.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <div class="card-image image-1 ph" role="img" aria-label="Placeholder image of focaccia">
+              <div>
+                <span class="ph-label">Photo placeholder</span>
+                <strong>Focaccia photo</strong>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="tag">Signature</span>
+              <h3>Focaccia</h3>
+              <p>Homemade sourdough focaccia, baked in small batches. Details coming soon.</p>
+            </div>
+          </article>
+
+          <article class="card reveal" style="--d:.1s">
+            <div class="card-image image-2 ph" role="img" aria-label="Placeholder image of sourdough bread">
+              <div>
+                <span class="ph-label">Photo placeholder</span>
+                <strong>Sourdough photo</strong>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="tag">Bakery favourite</span>
+              <h3>Sourdough Bakes</h3>
+              <p>Baked goods made with homemade sourdough. Menu details coming soon.</p>
+            </div>
+          </article>
+
+          <article class="card reveal" style="--d:.2s">
+            <div class="card-image image-3 ph" role="img" aria-label="Placeholder image of a sweet baked good">
+              <div>
+                <span class="ph-label">Photo placeholder</span>
+                <strong>Sweet bake photo</strong>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="tag">Seasonal</span>
+              <h3>Sweet Bakes</h3>
+              <p>Seasonal baked treats may be available. Availability to be confirmed.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="order">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">How to order</p>
+          <h2>Made to order, with a little notice</h2>
+          <p>
+            Because every item is prepared after payment is confirmed, please allow enough time
+            before your pickup date.
+          </p>
+        </div>
+
+        <div class="steps">
+          <article class="step reveal">
+            <h3>Choose your bake</h3>
+            <p>
+              Browse the available bakes and decide what you would like to order. Menu details and
+              availability are to be confirmed.
+            </p>
+          </article>
+
+          <article class="step reveal" style="--d:.1s">
+            <h3>Submit your order</h3>
+            <p>
+              Read all order details carefully and complete the required information before
+              submitting your order.
+            </p>
+          </article>
+
+          <article class="step reveal" style="--d:.2s">
+            <h3>Confirm &amp; pick up</h3>
+            <p>
+              Orders are prepared after payment is confirmed. Please submit your order at least
+              three days before your pickup date.
+            </p>
+          </article>
+        </div>
+
+        <div class="notice reveal">
+          <strong>Important:</strong>
+          <span>All items are made to order and prepared after payment is
+          confirmed. Orders must be submitted 3 days prior to the pickup date.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft" id="pickup">
+      <div class="container pickup-grid">
+        <div class="reveal">
+          <p class="eyebrow">Pickup &amp; contact</p>
+          <h2>Find your freshly baked order</h2>
+          <p>
+            KO-BO BAKEHOUSE pickup is located near Winston Churchill and Battleford Road in
+            Mississauga. If you have any questions, feel free to get in touch.
+          </p>
+
+          <a class="button" href="mailto:mariko.andris@gmail.com?subject=KO-BO%20Bakehouse%20Question">Email KO-BO Bakehouse</a>
+        </div>
+
+        <div class="pickup-card reveal" style="--d:.12s">
+          <h3>Pickup information</h3>
+          <p>
+            Pickup area: Winston Churchill &amp; Battleford Road, Mississauga, Ontario.
+          </p>
+
+          <ul class="contact-list">
+            <li>
+              <a href="mailto:mariko.andris@gmail.com">
+                <span class="icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M3 6h18v12H3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="m3 7 9 6 9-6" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                mariko.andris@gmail.com
+                <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/kobo.bakehouse/" target="_blank" rel="noopener noreferrer">
+                <span class="icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="17" cy="7" r="1" fill="currentColor"/>
+                  </svg>
+                </span>
+                @kobo.bakehouse
+                <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.google.com/maps/search/?api=1&query=Winston+Churchill+and+Battleford+Road%2C+Mississauga%2C+Ontario" target="_blank" rel="noopener noreferrer">
+                <span class="icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    <circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </span>
+                Get pickup directions
+                <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-brand">KO-BO Bakehouse</div>
+        <p class="footer-tagline">
+          Small-batch sourdough focaccia and baked goods in Mississauga.
+        </p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#about">About</a>
+        <a href="#bakes">Bakes</a>
+        <a href="#order">Order &amp; Pickup</a>
+        <a href="mailto:mariko.andris@gmail.com">Contact</a>
+      </nav>
+
+      <div class="footer-social">
+        <a href="https://www.instagram.com/kobo.bakehouse/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <p class="concept-note">
+        © 2026 KO-BO BAKEHOUSE · Design concept — menu, images, and details subject to change.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var header = document.querySelector('.site-header');
+      var toggle = document.querySelector('.menu-toggle');
+      var nav = document.getElementById('site-nav');
+
+      function setMenu(open) {
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        nav.classList.toggle('open', open);
+      }
+
+      toggle.addEventListener('click', function () {
+        setMenu(toggle.getAttribute('aria-expanded') !== 'true');
+      });
+
+      nav.addEventListener('click', function (e) {
+        if (e.target.closest('a')) setMenu(false);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && nav.classList.contains('open')) {
+          setMenu(false);
+          toggle.focus();
+        }
+      });
+
+      document.addEventListener('click', function (e) {
+        if (nav.classList.contains('open') && !header.contains(e.target)) setMenu(false);
+      });
+
+      window.matchMedia('(min-width: 820px)').addEventListener('change', function (e) {
+        if (e.matches) setMenu(false);
+      });
+
+      function onScroll() {
+        header.classList.toggle('scrolled', window.scrollY > 8);
+      }
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      var items = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        items.forEach(function (el) { el.classList.add('in'); });
+        return;
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      items.forEach(function (el) { observer.observe(el); });
+    })();
+  </script>
+</body>
+</html>
