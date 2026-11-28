@@ -9,7 +9,8 @@
   <meta property="og:title" content="KO-BO BAKEHOUSE" />
   <meta property="og:description" content="Small-batch focaccia and baked goods made with homemade sourdough in Mississauga." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="images/hero-focaccia.jpg" />
+  <meta property="og:image" content="https://palattao.net/mariko-bakery-site/images/hero-focaccia.jpg" />
+  <meta property="og:url" content="https://palattao.net/mariko-bakery-site/" />
   <link rel="canonical" href="https://palattao.net/mariko-bakery-site/" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍞</text></svg>" />
 
@@ -728,6 +729,22 @@
     .order-item label { font-weight: 600; font-size: .95rem; }
     .order-item input { width: 90px; min-height: 44px; text-align: center; }
     .order-form .form-note { color: var(--muted); font-size: .92rem; font-weight: 400; }
+    .order-form { scroll-margin-top: calc(var(--header-h) + 16px); }
+    .order-form fieldset { display: grid; gap: 10px; min-width: 0; margin: 0; padding: 0; border: 0; }
+    .order-form legend { margin-bottom: 10px; padding: 0; font-weight: 600; font-size: .95rem; }
+    .stepper { display: inline-flex; align-items: center; border: 1px solid rgba(63, 45, 32, .25); border-radius: 999px; background: #fff; overflow: hidden; }
+    .stepper button { width: 44px; height: 44px; border: 0; background: transparent; color: var(--brown); font: inherit; font-size: 1.35rem; line-height: 1; cursor: pointer; transition: background .2s ease; }
+    .stepper button:hover { background: rgba(201, 154, 83, .22); }
+    .order-form .stepper input { width: 52px; min-height: 44px; padding: 0; border: 0; border-radius: 0; background: transparent; text-align: center; font-weight: 700; -moz-appearance: textfield; appearance: textfield; }
+    .stepper input::-webkit-outer-spin-button, .stepper input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    .order-item.has-qty { border-color: var(--gold); background: #fff8ec; }
+    .form-error { padding: 12px 14px; border-radius: 12px; background: #fbeae4; color: #8a2d12; font-size: .93rem; font-weight: 600; }
+    .order-form .button:disabled { opacity: .5; cursor: not-allowed; transform: none; box-shadow: none; }
+    .order-fallback { display: grid; gap: 12px; padding: 18px; border: 1px dashed var(--gold); border-radius: 16px; background: var(--cream); }
+    .order-fallback[hidden], .form-error[hidden], .form-note[hidden] { display: none; }
+    .order-fallback p { font-size: .94rem; color: var(--muted); }
+    .order-fallback textarea { min-height: 150px; font-size: .9rem; }
+    .copy-status { min-height: 1.4em; font-size: .9rem; font-weight: 600; color: var(--gold-deep); }
 
     /* ---------- Pickup ---------- */
     .pickup-grid {
@@ -995,7 +1012,7 @@
         <a href="#order">Order &amp; Pickup</a>
       </nav>
 
-      <a class="button small header-cta" href="mailto:mariko.andris@gmail.com?subject=KO-BO%20Bakehouse%20Order&body=Hi%20Mariko%2C%0A%0ABake%3A%20%0AQuantity%3A%20%0APickup%20date%3A%20%0AName%3A%20%0APhone%3A%20%0A%0AThank%20you!">Order</a>
+      <a class="button small header-cta" href="#place-order">Order</a>
 
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
         <span></span>
@@ -1015,7 +1032,7 @@
           </p>
 
           <div class="hero-actions">
-            <a class="button" href="mailto:mariko.andris@gmail.com?subject=KO-BO%20Bakehouse%20Order&body=Hi%20Mariko%2C%0A%0ABake%3A%20%0AQuantity%3A%20%0APickup%20date%3A%20%0AName%3A%20%0APhone%3A%20%0A%0AThank%20you!">Order Your Bake</a>
+            <a class="button" href="#place-order">Order Your Bake</a>
             <a class="button secondary" href="#bakes">See What’s Baking</a>
           </div>
         </div>
@@ -1027,7 +1044,7 @@
               <strong>Freshly Baked Focaccia</strong>
               <small>Add images/hero-focaccia.jpg</small>
             </div>
-            <img src="images/hero-focaccia.jpg" alt="Freshly baked sourdough focaccia" onerror="this.remove()" />
+            <img src="images/hero-focaccia.jpg" alt="Freshly baked sourdough focaccia" fetchpriority="high" onerror="this.remove()" />
           </div>
           <div class="hero-badge" aria-hidden="true">
             <div>
@@ -1055,7 +1072,7 @@
             <strong>Made in Small Batches</strong>
             <small>Add images/baker-dough.jpg</small>
           </div>
-          <img src="images/baker-dough.jpg" alt="Baking sourdough dough in small batches" onerror="this.remove()" />
+          <img src="images/baker-dough.jpg" alt="Baking sourdough dough in small batches" loading="lazy" decoding="async" onerror="this.remove()" />
         </div>
 
         <div class="about-copy reveal" style="--d:.1s">
@@ -1066,8 +1083,7 @@
             prepared with homemade sourdough, simple ingredients, and lots of love &amp; care.
           </p>
           <p>
-            Items are made to order, so each order is prepared after payment is confirmed. Please
-            submit orders at least three days before your requested pickup date.
+            Items are made to order, so each order is prepared after payment is confirmed.
           </p>
 
           <div class="values">
@@ -1106,7 +1122,7 @@
                 <span class="ph-label">Photo placeholder</span>
                 <strong>Focaccia photo</strong>
               </div>
-              <img src="images/focaccia.jpg" alt="Sourdough focaccia" onerror="this.remove()" />
+              <img src="images/focaccia.jpg" alt="Sourdough focaccia" loading="lazy" decoding="async" onerror="this.remove()" />
             </div>
             <div class="card-body">
               <span class="tag">Signature</span>
@@ -1121,7 +1137,7 @@
                 <span class="ph-label">Photo placeholder</span>
                 <strong>Sourdough photo</strong>
               </div>
-              <img src="images/sourdough.jpg" alt="Sourdough bakes" onerror="this.remove()" />
+              <img src="images/sourdough.jpg" alt="Sourdough bakes" loading="lazy" decoding="async" onerror="this.remove()" />
             </div>
             <div class="card-body">
               <span class="tag">Bakery favourite</span>
@@ -1136,7 +1152,7 @@
                 <span class="ph-label">Photo placeholder</span>
                 <strong>Sweet bake photo</strong>
               </div>
-              <img src="images/sweet-bake.jpg" alt="Seasonal sweet bake" onerror="this.remove()" />
+              <img src="images/sweet-bake.jpg" alt="Seasonal sweet bake" loading="lazy" decoding="async" onerror="this.remove()" />
             </div>
             <div class="card-body">
               <span class="tag">Seasonal</span>
@@ -1179,8 +1195,8 @@
           <article class="step reveal" style="--d:.2s">
             <h3>Confirm &amp; pick up</h3>
             <p>
-              Orders are prepared after payment is confirmed. Please submit your order at least
-              three days before your pickup date.
+              Orders are prepared after payment is confirmed, then ready for pickup at your
+              chosen slot.
             </p>
           </article>
         </div>
@@ -1191,37 +1207,61 @@
           confirmed. Orders must be submitted 3 days prior to the pickup date.</span>
         </div>
 
-        <form class="order-form reveal" id="order-form">
+        <form class="order-form reveal" id="place-order">
           <h3>Place an order</h3>
           <p>Choose as many bakes as you like, set a quantity for each, then pick a pickup slot &mdash; it opens an email to Mariko with everything filled in. No payment on the site; orders are prepared after payment is confirmed by e-transfer.</p>
-          <div class="order-items">
-            <span>Your order &mdash; set a quantity for each bake you want (0 = don&rsquo;t order it)</span>
+
+          <fieldset class="order-items">
+            <legend>Your order &mdash; set a quantity for each bake you want</legend>
             <div class="order-item">
               <label for="qty-focaccia">Focaccia</label>
-              <input type="number" name="qty-focaccia" id="qty-focaccia" min="0" value="0">
+              <div class="stepper">
+                <button type="button" data-step="-1" aria-label="Decrease Focaccia quantity">&minus;</button>
+                <input type="number" name="qty-focaccia" id="qty-focaccia" min="0" value="0" inputmode="numeric">
+                <button type="button" data-step="1" aria-label="Increase Focaccia quantity">+</button>
+              </div>
             </div>
             <div class="order-item">
               <label for="qty-sourdough">Sourdough Bakes</label>
-              <input type="number" name="qty-sourdough" id="qty-sourdough" min="0" value="0">
+              <div class="stepper">
+                <button type="button" data-step="-1" aria-label="Decrease Sourdough Bakes quantity">&minus;</button>
+                <input type="number" name="qty-sourdough" id="qty-sourdough" min="0" value="0" inputmode="numeric">
+                <button type="button" data-step="1" aria-label="Increase Sourdough Bakes quantity">+</button>
+              </div>
             </div>
             <div class="order-item">
               <label for="qty-sweet">Sweet Bakes</label>
-              <input type="number" name="qty-sweet" id="qty-sweet" min="0" value="0">
+              <div class="stepper">
+                <button type="button" data-step="-1" aria-label="Decrease Sweet Bakes quantity">&minus;</button>
+                <input type="number" name="qty-sweet" id="qty-sweet" min="0" value="0" inputmode="numeric">
+                <button type="button" data-step="1" aria-label="Increase Sweet Bakes quantity">+</button>
+              </div>
             </div>
-          </div>
-          <label>Pickup slot &mdash; date, time &amp; location
+          </fieldset>
+
+          <label>Pickup slot &mdash; date &amp; time
             <select name="pickup-slot" id="pickup-slot" required>
               <option value="" disabled selected>Choose a pickup slot</option>
             </select></label>
-          <p class="form-note">Only this week&rsquo;s available slots are shown. If a slot is full or no longer available, Mariko will confirm by email.</p>
+          <p class="form-note">Pickup location: Winston Churchill &amp; Battleford Rd, Mississauga. Only this week&rsquo;s available slots are shown. If a slot is full or no longer available, Mariko will confirm by email.</p>
+          <p class="form-note" id="no-slots" hidden>No pickup slots are open right now. Please <a href="mailto:mariko.andris@gmail.com?subject=KO-BO%20Bakehouse%20Question">email Mariko</a> to ask about upcoming dates.</p>
+
           <label>Your name
             <input type="text" name="name" required autocomplete="name"></label>
           <label>Phone
             <input type="tel" name="phone" required autocomplete="tel"></label>
           <label>Notes (optional)
             <textarea name="notes" placeholder="Allergies, flavours, or anything else Mariko should know"></textarea></label>
-          <button class="button" type="submit">Send order by email</button>
-          <p class="form-note">Menu flavours, sizes and prices are still to be added once Mariko sends them &mdash; the three bakes above are placeholders for now. The pickup slots above are samples &mdash; replace them each week in the pickupSlots list at the bottom of this file.</p>
+
+          <p class="form-error" id="order-error" role="alert" hidden>Please choose at least one bake &mdash; set a quantity above 0 for anything you want to order.</p>
+          <button class="button" type="submit" id="order-submit">Send order by email</button>
+
+          <div class="order-fallback" id="order-fallback" role="status" hidden>
+            <p>Your email app should open with your order filled in. If nothing opens, copy the details below and email them to <a href="mailto:mariko.andris@gmail.com">mariko.andris@gmail.com</a>.</p>
+            <textarea id="order-text" readonly aria-label="Your order details"></textarea>
+            <button class="button secondary" type="button" id="order-copy">Copy order details</button>
+            <span class="copy-status" id="copy-status" aria-live="polite"></span>
+          </div>
         </form>
       </div>
     </section>
@@ -1385,47 +1425,127 @@
 
   <script>
     (function () {
-      // EDIT THIS LIST EACH WEEK — one line per available pickup slot.
-      // Format: "Day, Month Date — time — location"
-      // Only list slots at least 3 days out, matching the 3-day notice rule.
-      // SAMPLE SLOTS — replace with Mariko's real slots for the week.
+      // EDIT THIS LIST EACH WEEK: one line per pickup slot, date as YYYY-MM-DD.
+      // Slots less than MIN_NOTICE_DAYS away are hidden automatically, and past slots drop off.
+      // SAMPLE SLOTS: replace with Mariko's real slots.
+      var PICKUP_LOCATION = 'Winston Churchill & Battleford Rd, Mississauga';
+      var MIN_NOTICE_DAYS = 3;
       var pickupSlots = [
-        "Saturday, Dec 5 — 10:00 AM–12:00 PM — Winston Churchill & Battleford Rd, Mississauga",
-        "Saturday, Dec 5 — 1:00–3:00 PM — Winston Churchill & Battleford Rd, Mississauga",
-        "Sunday, Dec 6 — 11:00 AM–1:00 PM — Winston Churchill & Battleford Rd, Mississauga"
+        { date: '2026-12-05', time: '10:00 AM\u201312:00 PM' },
+        { date: '2026-12-05', time: '1:00\u20133:00 PM' },
+        { date: '2026-12-06', time: '11:00 AM\u20131:00 PM' }
       ];
-      var slotSelect = document.getElementById('pickup-slot');
-      if (slotSelect) {
-        pickupSlots.forEach(function (slot) {
-          var opt = document.createElement('option');
-          opt.value = slot;
-          opt.textContent = slot;
-          slotSelect.appendChild(opt);
-        });
-      }
-      var form = document.getElementById('order-form');
+
+      var form = document.getElementById('place-order');
       if (!form) return;
+
+      var slotSelect = document.getElementById('pickup-slot');
+      var submitBtn = document.getElementById('order-submit');
+      var noSlots = document.getElementById('no-slots');
+      var errorBox = document.getElementById('order-error');
+      var fallback = document.getElementById('order-fallback');
+      var orderText = document.getElementById('order-text');
+      var copyBtn = document.getElementById('order-copy');
+      var copyStatus = document.getElementById('copy-status');
+
+      function parseDate(value) {
+        var p = value.split('-');
+        return new Date(+p[0], +p[1] - 1, +p[2]);
+      }
+
+      var earliest = new Date();
+      earliest.setHours(0, 0, 0, 0);
+      earliest.setDate(earliest.getDate() + MIN_NOTICE_DAYS);
+
+      var openSlots = pickupSlots
+        .filter(function (slot) { return parseDate(slot.date) >= earliest; })
+        .sort(function (a, b) { return parseDate(a.date) - parseDate(b.date); });
+
+      openSlots.forEach(function (slot) {
+        var d = parseDate(slot.date);
+        var opt = document.createElement('option');
+        opt.textContent = d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }) + ' \u00b7 ' + slot.time;
+        opt.value = d.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' }) + ' \u2014 ' + slot.time + ' \u2014 ' + PICKUP_LOCATION;
+        slotSelect.appendChild(opt);
+      });
+
+      if (openSlots.length === 0) {
+        slotSelect.disabled = true;
+        slotSelect.options[0].textContent = 'No pickup slots open right now';
+        submitBtn.disabled = true;
+        noSlots.hidden = false;
+      }
+
+      function refreshItem(input) {
+        input.closest('.order-item').classList.toggle('has-qty', (parseInt(input.value, 10) || 0) > 0);
+      }
+
+      form.querySelectorAll('.stepper button').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var input = btn.parentNode.querySelector('input');
+          var next = (parseInt(input.value, 10) || 0) + parseInt(btn.dataset.step, 10);
+          input.value = Math.max(0, next);
+          refreshItem(input);
+          errorBox.hidden = true;
+        });
+      });
+
+      form.querySelectorAll('.stepper input').forEach(function (input) {
+        input.addEventListener('input', function () {
+          refreshItem(input);
+          errorBox.hidden = true;
+        });
+      });
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         var f = e.target;
         var items = [
-          ['Focaccia', parseInt(f['qty-focaccia'].value, 10) || 0],
-          ['Sourdough Bakes', parseInt(f['qty-sourdough'].value, 10) || 0],
-          ['Sweet Bakes', parseInt(f['qty-sweet'].value, 10) || 0]
+          ['Focaccia', parseInt(f.elements['qty-focaccia'].value, 10) || 0],
+          ['Sourdough Bakes', parseInt(f.elements['qty-sourdough'].value, 10) || 0],
+          ['Sweet Bakes', parseInt(f.elements['qty-sweet'].value, 10) || 0]
         ].filter(function (item) { return item[1] > 0; });
+
         if (items.length === 0) {
-          alert('Please choose at least one bake — set a quantity above 0 for anything you want to order.');
+          errorBox.hidden = false;
+          f.elements['qty-focaccia'].focus();
           return;
         }
+        errorBox.hidden = true;
+
         var body = [
           'Items:',
           items.map(function (item) { return '- ' + item[0] + ' x' + item[1]; }).join('\n'),
-          'Pickup slot: ' + f['pickup-slot'].value,
-          'Name: ' + f.name.value,
-          'Phone: ' + f.phone.value,
-          'Notes: ' + (f.notes.value || '-')
+          'Pickup slot: ' + f.elements['pickup-slot'].value,
+          'Name: ' + f.elements['name'].value,
+          'Phone: ' + f.elements['phone'].value,
+          'Notes: ' + (f.elements['notes'].value || '-')
         ].join('\n');
+
+        orderText.value = 'To: mariko.andris@gmail.com\nSubject: KO-BO Bakehouse Order\n\n' + body;
+        copyStatus.textContent = '';
+        fallback.hidden = false;
+        fallback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
         window.location.href = 'mailto:mariko.andris@gmail.com?subject=' + encodeURIComponent('KO-BO Bakehouse Order') + '&body=' + encodeURIComponent(body);
+      });
+
+      copyBtn.addEventListener('click', function () {
+        function done() { copyStatus.textContent = 'Copied. Paste it into an email to Mariko.'; }
+        function legacyCopy() {
+          orderText.select();
+          try {
+            document.execCommand('copy');
+            done();
+          } catch (err) {
+            copyStatus.textContent = 'Press and hold the text above to copy it.';
+          }
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(orderText.value).then(done, legacyCopy);
+        } else {
+          legacyCopy();
+        }
       });
     })();
   </script>
