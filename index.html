@@ -701,6 +701,34 @@
 
     .notice > * { position: relative; }
 
+    /* ---------- Order form ---------- */
+    .order-form {
+      margin-top: 28px;
+      padding: 28px 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      gap: 16px;
+      max-width: 560px;
+    }
+    .order-form h3 { margin-bottom: 2px; }
+    .order-form > p { color: var(--muted); font-size: .98rem; }
+    .order-form label { display: grid; gap: 6px; font-weight: 600; font-size: .95rem; }
+    .order-form input, .order-form select, .order-form textarea {
+      width: 100%; min-height: 50px; padding: 10px 14px;
+      border: 1px solid rgba(63, 45, 32, .25); border-radius: 14px;
+      background: #fffdf9; font: inherit; color: inherit;
+    }
+    .order-form textarea { min-height: 90px; resize: vertical; }
+    .order-items { display: grid; gap: 10px; }
+    .order-items > span { font-weight: 600; font-size: .95rem; }
+    .order-item { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid rgba(63, 45, 32, .18); border-radius: 14px; background: #fffdf9; }
+    .order-item label { font-weight: 600; font-size: .95rem; }
+    .order-item input { width: 90px; min-height: 44px; text-align: center; }
+    .order-form .form-note { color: var(--muted); font-size: .92rem; font-weight: 400; }
+
     /* ---------- Pickup ---------- */
     .pickup-grid {
       display: grid;
@@ -1162,6 +1190,39 @@
           <span>All items are made to order and prepared after payment is
           confirmed. Orders must be submitted 3 days prior to the pickup date.</span>
         </div>
+
+        <form class="order-form reveal" id="order-form">
+          <h3>Place an order</h3>
+          <p>Choose as many bakes as you like, set a quantity for each, then pick a pickup slot &mdash; it opens an email to Mariko with everything filled in. No payment on the site; orders are prepared after payment is confirmed by e-transfer.</p>
+          <div class="order-items">
+            <span>Your order &mdash; set a quantity for each bake you want (0 = don&rsquo;t order it)</span>
+            <div class="order-item">
+              <label for="qty-focaccia">Focaccia</label>
+              <input type="number" name="qty-focaccia" id="qty-focaccia" min="0" value="0">
+            </div>
+            <div class="order-item">
+              <label for="qty-sourdough">Sourdough Bakes</label>
+              <input type="number" name="qty-sourdough" id="qty-sourdough" min="0" value="0">
+            </div>
+            <div class="order-item">
+              <label for="qty-sweet">Sweet Bakes</label>
+              <input type="number" name="qty-sweet" id="qty-sweet" min="0" value="0">
+            </div>
+          </div>
+          <label>Pickup slot &mdash; date, time &amp; location
+            <select name="pickup-slot" id="pickup-slot" required>
+              <option value="" disabled selected>Choose a pickup slot</option>
+            </select></label>
+          <p class="form-note">Only this week&rsquo;s available slots are shown. If a slot is full or no longer available, Mariko will confirm by email.</p>
+          <label>Your name
+            <input type="text" name="name" required autocomplete="name"></label>
+          <label>Phone
+            <input type="tel" name="phone" required autocomplete="tel"></label>
+          <label>Notes (optional)
+            <textarea name="notes" placeholder="Allergies, flavours, or anything else Mariko should know"></textarea></label>
+          <button class="button" type="submit">Send order by email</button>
+          <p class="form-note">Menu flavours, sizes and prices are still to be added once Mariko sends them &mdash; the three bakes above are placeholders for now. The pickup slots above are samples &mdash; replace them each week in the pickupSlots list at the bottom of this file.</p>
+        </form>
       </div>
     </section>
 
@@ -1319,6 +1380,53 @@
       }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
       items.forEach(function (el) { observer.observe(el); });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      // EDIT THIS LIST EACH WEEK — one line per available pickup slot.
+      // Format: "Day, Month Date — time — location"
+      // Only list slots at least 3 days out, matching the 3-day notice rule.
+      // SAMPLE SLOTS — replace with Mariko's real slots for the week.
+      var pickupSlots = [
+        "Saturday, Dec 5 — 10:00 AM–12:00 PM — Winston Churchill & Battleford Rd, Mississauga",
+        "Saturday, Dec 5 — 1:00–3:00 PM — Winston Churchill & Battleford Rd, Mississauga",
+        "Sunday, Dec 6 — 11:00 AM–1:00 PM — Winston Churchill & Battleford Rd, Mississauga"
+      ];
+      var slotSelect = document.getElementById('pickup-slot');
+      if (slotSelect) {
+        pickupSlots.forEach(function (slot) {
+          var opt = document.createElement('option');
+          opt.value = slot;
+          opt.textContent = slot;
+          slotSelect.appendChild(opt);
+        });
+      }
+      var form = document.getElementById('order-form');
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var f = e.target;
+        var items = [
+          ['Focaccia', parseInt(f['qty-focaccia'].value, 10) || 0],
+          ['Sourdough Bakes', parseInt(f['qty-sourdough'].value, 10) || 0],
+          ['Sweet Bakes', parseInt(f['qty-sweet'].value, 10) || 0]
+        ].filter(function (item) { return item[1] > 0; });
+        if (items.length === 0) {
+          alert('Please choose at least one bake — set a quantity above 0 for anything you want to order.');
+          return;
+        }
+        var body = [
+          'Items:',
+          items.map(function (item) { return '- ' + item[0] + ' x' + item[1]; }).join('\n'),
+          'Pickup slot: ' + f['pickup-slot'].value,
+          'Name: ' + f.name.value,
+          'Phone: ' + f.phone.value,
+          'Notes: ' + (f.notes.value || '-')
+        ].join('\n');
+        window.location.href = 'mailto:mariko.andris@gmail.com?subject=' + encodeURIComponent('KO-BO Bakehouse Order') + '&body=' + encodeURIComponent(body);
+      });
     })();
   </script>
 </body>
